@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+{%block title%} Select Semester
+{%endblock title%}
+{%block main%}
+<h2>Choose Current Semester</h2>
+<form method='POST'>
+	{%csrf_token%}
+	{%for semester in semesters%}
+		<input type ='radio' id='{{semester.id}}' name = 'current semester' value='{{semester.id}}' {%if semester == default%} checked {%endif%}>
+	<label for='{{semester}}'>  {{semester.session}}, {{semester.semester_ch_display}}	</label> <br>
+	{%endfor%}
+	<button type='submit'>Submit</button>
+</form>
+	
+{%endblock main%}

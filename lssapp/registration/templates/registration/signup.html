@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+{%block title%} SIGNUP Page
+{%endblock title%}
+{%block main%}
+
+<form method='post' enctype='multipart/form-data'>
+	{%csrf_token%}
+	<p>Already have an account? <a href='{%url "reg:login"%}'>Login</a></p>
+	{{form.as_p}}
+
+<button type='submit'> Register</button>
+
+	
+</form>
+{%endblock main%}

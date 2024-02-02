@@ -1,0 +1,51 @@
+{%extends 'base.html'%}
+{%block title%} All Courses Classifications
+{%endblock title%}
+{%block main%}
+	<h3> Course Registration for {{student.name}},{{student.username}} in {{semester}}, {{levels}}</h3>
+
+
+	<form method='POST' >
+		{%csrf_token%}
+		{%if gst%}
+		<label id ='gst'>GST and ENT Courses</label> <br>
+		{%for course in gst%}
+		 <input type='checkbox' name='gst' value ='{{course}}' checked disabled> <a href="{% url 'reg:courses_detail' id=course.id%}">{{course}} </a><br>
+		 <input type='hidden' name='gst' value='{{course}}'>
+		{%endfor%}
+		{%endif%} <br>
+		{%if law_compulsory%}
+		<label id = 'compulsory law'> Compulsory Law Courses </label> <br>
+		{%for course in law_compulsory%}
+		 <input type='checkbox' name='lc' value ='{{course}}' checked disabled > <a href="{% url 'reg:courses_detail' id=course.id%}">{{course}}</a> <br>
+		 <input type='hidden' name='lc' value ='{{course}}'>
+		{%endfor%}
+		{%endif%} <br>
+		{%if nonlaw_compulsory%}
+		<label id = 'uni compulsory'> Compulsory University Courses </label> <br>
+		{%for course in nonlaw_compulsory%}
+		 <input type='checkbox' name='nc' value ='{{course}}' checked disabled> <a href="{% url 'reg:courses_detail' id=course.id%}">{{course}}</a> <br>
+		 <input type='hidden' name='nc' value ='{{course}}'>
+		{%endfor%}
+		{%endif%} <br>
+		{%if law_electives%}
+		<label id = 'elective law'> Elective Law Courses </label> <br>
+		{%for elect in law_electives%}
+		 <input type='checkbox' name='le' value ='{{elect}}'> <a href="{% url 'reg:courses_detail' id=elect.id%}">{{elect}}</a><br>
+		{%endfor%}
+		{%endif%} <br>
+		{%if others%}
+		<label id = 'compulsory law'> Elective Non-Law Courses </label> <br>
+		{%for course in others%}
+		 <input type='checkbox' name='ne' value ='{{course}}'><a href="{% url 'reg:courses_detail' id=course.id%}">{{course}}</a><br>
+		{%endfor%}
+		{%endif%} <br>
+		{%if outstanding%}
+		<label id = 'outstanding courses'> Outstanding Courses </label> <br>
+		{%for course in outstanding%}
+		 <input type='checkbox' name='fc' value ='{{course}}'><a href="{% url 'reg:courses_detail' id=course.id%}">{{course}}</a> <br>
+		{%endfor%}
+		{%endif%} 
+		<button type='Submit'> Register</button>
+	</form>
+{%endblock main%}

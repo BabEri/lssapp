@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+{%block title%} LOGIN Page
+{%endblock title%}
+{%block main%}
+	{%if courses%}
+	{%for i in courses%}
+	<p>{{i.courses}} -- {{i.semester}}</p>
+	{%endfor%}
+	{%else%}
+	<p>No registered Course yet, please <a href='{%url "reg:reg_courses"%}'> here
+	</p>
+	{%endif%}
+{%endblock main%}

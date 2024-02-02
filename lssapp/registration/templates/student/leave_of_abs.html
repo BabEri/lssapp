@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+{%block title%} Upload Leave of Absence Proof
+{%endblock title%}
+{%block main%}
+<h2>Choose Current Semester</h2>
+<form method='POST'>
+	{%csrf_token%}
+	<label for='leave'>  Please Upload proof of Leave of Absence</label> <br>
+		<input type ='file' id='id_leave' name = 'leave' >
+	<button type='submit'>Submit</button>
+</form>
+	
+{%endblock main%}

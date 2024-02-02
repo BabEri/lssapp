@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%block title%} Score for Registered Courses in {{levels}} {{semester}}
+{%endblock title%}
+{%block main%}
+<h3> Score Input for Courses in {{levels}} {{semester}}</h3>
+<p>Please input the scores you got, or the one you predict you will get, if the scores are not accurate please do not proceed to the next semester until you correct them to the acccurate ones, you will need to contact the Admin to correct such changes </p>
+<form method='POST'>
+	{%csrf_token%}
+{%for course in semester_courses%}
+<input type='hidden' name='semester_registration' value='{{course.courses}}'>
+<h3> {{course.courses}}</h3>
+<label for= 'Test'>Test</label>
+<input type='text' name='{{course}}Test' id = 'Test'>
+<label for='Exam'>Exam</label>
+<input type='text' name='{{course}}Exam' id='Exam'>
+{%endfor%} <br><br>
+<button name ='proceed' type='submit' value ='dashboard'>Save and check dashboard</button>
+{%if not equals%}
+<button name ='proceed' type='submit' value='nextReg'>Save and proceed to next semester</button>
+{%endif%}
+</form>
+{%endblock main%}
